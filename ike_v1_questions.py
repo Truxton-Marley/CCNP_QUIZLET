@@ -49,7 +49,7 @@ questions = [
         {
           "answer": "crypto isakmp policy 10",
           "level": cli.CONFIG,
-          "hint": "You need to create a policy for isakmp. It should be #10. Follow the order in the 'sample"
+          "hint": "You need to create a policy for isakmp. It should be #10. Follow the order in the 'sample'"
         },
         {
           "answer": "authentication pre-share",
@@ -106,7 +106,7 @@ questions = [
 
     "about": """
     We don't configure the ISAKMP key/password under the policy directly, but
-    here with this configuration-level command. We use the neighbor statement
+    here with this configuration-level command. We use the address feature
     to limit who we use the key with, but we can also take advantage of a quad-zero
     address to use the password with anyone. No-xauth prevents the router from
     prompting the peer for Xauth information (username and password). This would
@@ -115,14 +115,14 @@ questions = [
     """,
 
     "sample": """
-    crypto isakmp key cisco neighbor 20.30.20.30 no-xauth
+    crypto isakmp key cisco address 20.30.20.30 no-xauth
     """,
 
     "answer_lines": [
         {
-        "answer": "crypto isakmp key cisco neighbor 20.30.20.30 no-xauth", 
+        "answer": "crypto isakmp key cisco address 20.30.20.30 no-xauth", 
         "level": cli.CONFIG,
-        "hint": "Setup the password cisco for neighbor 20.30.20.30. Type 'sample' if you want to see how to do it."}
+        "hint": "Setup the password cisco for address 20.30.20.30. Type 'sample' if you want to see how to do it."}
     ]
     },
     {
@@ -162,7 +162,8 @@ questions = [
     },
     {
     "question": """
-    And now we need to cap it off with an IPsec profile to which we will tie the transform-set. Create a profile named PROF.
+    And now we need to cap it off with an IPsec profile to which we will tie the
+    transform-set. Create a profile named PROF.
     """,
 
     "about": """
@@ -182,10 +183,19 @@ questions = [
     {
     "question": """
     Now apply the IPsec profile to tunnel 42
+    
+    This is the Tunnel's current configuration:
+    
+    interface Tunnel42
+      ip address 42.42.42.1 255.255.255.0
+      tunnel source GigabitEthernet0/1
+      tunnel destination 20.30.20.30
+    
     """,
 
     "about": """
-    PLACE DESCRIPTION HERE
+    Using an IPsec profile allows us to apply the configuration
+    to the tunnel itself. See "sample".
     """,
 
     "sample": """
@@ -194,8 +204,15 @@ questions = [
     """,
 
     "answer_lines": [
-        {"answer": "interface tunnel 42", "level": cli.CONFIG, "hint": "we need to go to the interface level for tunnel 42"},
-        {"answer": "tunnel protection ipsec profile PROF", "level": cli.IPSEC_PROFILE, "hint": "apply the IPsec profile PROF"},
+        {
+        "answer": "interface tunnel 42",
+        "level": cli.CONFIG,
+        "hint": "We need to go to the interface level for tunnel 42"
+        },
+        {
+        "answer": "tunnel protection ipsec profile PROF",
+        "level": cli.IPSEC_PROFILE,
+        "hint": "Apply the IPsec profile PROF using 'tunnel protection...'"},
     ]
     },
 ]
