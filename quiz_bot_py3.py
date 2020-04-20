@@ -31,6 +31,10 @@ print("     ")
 ###TODO: CREATE A USER CLASS
 ###TODO: BIND USER CLASS TO SQL MODEL/DATABASE
 
+###NOT SO SURE HAVING THIS AS A RECURSIVE FUNCTION IS A GOOD IDEA,
+###BUT DON'T THINK IT CAN GET TOO DEEP WITH THE CURRENT SETUP. TASK
+###MANAGER NOT SEEING ANYTHING, BUT CAN CRASH PROGRAM BY HOLDING DOWN
+###"ENTER' NON-STOP.
 def getLine(line):
     ###TODO: user may need to be propted for which command to enter at a given moment.
     ###create optional field in questions when extra instructions are needed and check
@@ -83,6 +87,9 @@ def get_answer(question):
     answer_lines = question["answer_lines"]
     ###TODO: ADD HINT COUNTER TO ENABLE USER TO CYCLES THROUGH MULTIPLE HINTS BEFORE GETTING ANSWER
     for line in answer_lines:
+        #solved = False
+        #while not solved:
+            #getLine(line)
         getLine(line)
     print(encouragement[random.randint(0, len(encouragement)-1)])
     
