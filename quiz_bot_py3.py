@@ -1,6 +1,7 @@
 import random
 import sys
 from ios_devices import R1
+from embedded_packet_capture_questions import questions as epc_questions
 from ike_v1_questions import questions as ike_v1_questions
 from nat_questions import questions as nat_questions
 
@@ -100,11 +101,11 @@ def ask_question(question):
 ###TODO: MAKE SELECTION LESS FRAGILE
 
 def get_choice():
-    choice = input("What would you like to study today? Please enter a number.\n\t1)IKE\n\t2)NAT\n\t3)Exit\n>:")
+    choice = input("What would you like to study today? Please enter a number.\n\t1)IKE\n\t2)EPC\n\t3)Exit\n>:")
     if choice == "1":
         questions = ike_v1_questions
     elif choice == "2":
-        questions = nat_questions
+        questions = epc_questions
     elif choice == "3":
         sys.exit()
     else:
@@ -112,7 +113,7 @@ def get_choice():
     return questions
 
 questions = get_choice()
-
+#print(questions.intro)
 question_counter = 0
 for question in questions:
     ask_question(question)

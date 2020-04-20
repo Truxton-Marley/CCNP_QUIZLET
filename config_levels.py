@@ -1,4 +1,9 @@
 ###CONFIGURATION LEVELS
+EXEC = {
+    "prompt": "R1#",
+    "options": ["show ip interface brief"]
+    }
+
 CONFIG = {
     "prompt": "R1(config)#",
     "options": ["crypto"]
