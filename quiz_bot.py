@@ -1,7 +1,9 @@
 import random
 import sys
 from ios_devices import R1
-from questions_first_draft import questions
+from questions_first_draft import questions as ike_questions
+from nat_questions import questions as nat_questions
+from netflow_questions import questions as netflow_questions
 
 ###TODO: BUILD A ROUTER CLASS WITH INTERFACES THAT WILL GIVE EXAMPLES WITH SHOW COMMANDS
 ###SHOULD BE ABLE TO DO SOMETHING LIKE (r1.show_ip_eigrp_neighbors) and print to screen.
@@ -90,6 +92,23 @@ def ask_question(question):
     get_answer(question)
 
 ###
+
+###TODO: MAKE SELECTION LESS FRAGILE
+
+def get_choice():
+    choice = raw_input("What would you like to study today? Please enter a number.\n\t1)IKE\n\t2)NetFlow\n\t3)Exit\n>:")
+    if choice == "1":
+        questions = ike_questions
+    elif choice == "2":
+        questions = netflow_questions
+    elif choice == "3":
+        sys.exit()
+    else:
+        get_choice()
+    return questions
+
+questions = get_choice()
+print("Got the choice")
 
 question_counter = 0
 for question in questions:

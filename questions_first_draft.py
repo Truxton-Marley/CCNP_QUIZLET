@@ -51,17 +51,17 @@ questions = [
     {
     "question": """
     You will now need to configure the password itself. Remember, it will be "cisco"
-    The neighbor is going to be 1.2.1.2. You can still type "hint" for a hint, or "sample" for an example.\n\n\n""",
+    The address for its peer is going to be 1.2.1.2. You can still type "hint" for a hint, or "sample" for an example.\n\n\n""",
 
     "about": """PLACE DESCRIPTION OF ISAKMP KEY HERE""",
 
     "sample": """
-    crypto isakmp key cisco neighbor 1.2.1.2 no-xauth
+    crypto isakmp key cisco address 1.2.1.2 no-xauth
     """,
 
     "answer_lines": [
-        {"answer": "crypto isakmp key cisco neighbor 1.2.1.2 no-xauth", "level": cli.CONFIG,
-        "hint": "Setup the password cisco for neighbor 1.2.1.2. Type 'sample' if you want to see how to do it."},
+        {"answer": "crypto isakmp key cisco address 1.2.1.2 no-xauth", "level": cli.CONFIG,
+        "hint": "Setup the password cisco for address 1.2.1.2. Type 'sample' if you want to see how to do it."},
     ]
     },
     {
