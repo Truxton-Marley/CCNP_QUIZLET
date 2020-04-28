@@ -1,14 +1,10 @@
 import random
 import sys
 from ios_devices import R1
-<<<<<<< HEAD
-from questions_first_draft import questions as ike_questions
-from nat_questions import questions as nat_questions
-from netflow_questions import questions as netflow_questions
-=======
+from embedded_packet_capture_questions import questions as epc_questions
 from ike_v1_questions import questions as ike_v1_questions
 from nat_questions import questions as nat_questions
->>>>>>> 852793ebada8eb5574a9be79a0c252a78ca6a277
+from netflow_questions import questions as netflow_questions
 
 ###TODO: BUILD A ROUTER CLASS WITH INTERFACES THAT WILL GIVE EXAMPLES WITH SHOW COMMANDS
 ###SHOULD BE ABLE TO DO SOMETHING LIKE (r1.show_ip_eigrp_neighbors) and print to screen.
@@ -36,6 +32,7 @@ print("     ")
 
 ###TODO: CREATE A USER CLASS
 ###TODO: BIND USER CLASS TO SQL MODEL/DATABASE
+
 
 def get_line(line, attempts):
     ###TODO: user may need to be propted for which command to enter at a given moment.
@@ -105,19 +102,11 @@ def ask_question(question):
 ###TODO: MAKE SELECTION LESS FRAGILE
 
 def get_choice():
-<<<<<<< HEAD
     choice = raw_input("What would you like to study today? Please enter a number.\n\t1)IKE\n\t2)NetFlow\n\t3)Exit\n>:")
-    if choice == "1":
-        questions = ike_questions
-    elif choice == "2":
-        questions = netflow_questions
-=======
-    choice = input("What would you like to study today? Please enter a number.\n\t1)IKE\n\t2)NAT\n\t3)Exit\n>:")
     if choice == "1":
         questions = ike_v1_questions
     elif choice == "2":
-        questions = nat_questions
->>>>>>> 852793ebada8eb5574a9be79a0c252a78ca6a277
+        questions = netflow_questions
     elif choice == "3":
         sys.exit()
     else:
@@ -125,11 +114,7 @@ def get_choice():
     return questions
 
 questions = get_choice()
-<<<<<<< HEAD
-print("Got the choice")
-=======
->>>>>>> 852793ebada8eb5574a9be79a0c252a78ca6a277
-
+#print(questions.intro)
 question_counter = 0
 for question in questions:
     ask_question(question)

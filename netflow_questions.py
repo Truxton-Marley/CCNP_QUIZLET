@@ -21,7 +21,210 @@ ip cef
 """,
         },
         {
-        "question": "Configure TnF with a 5 minute timeout for active flows:",
+        "question": "Now it's time to configure FnF. How do you configure flow monitor BUNNY using the default record 'netflow-original'",
+
+        "about": "flow monitor BUNNY",
+
+        "answer_lines": [
+                {
+                "answer": "flow monitor BUNNY",
+                "indention": "0",
+                "level": cli.CONFIG,
+                "hint": "flow monitor BUNNY",
+                },
+                {
+                "answer": "record netflow-original",
+                "indention": "1",
+                "level": cli.CONFIG,
+                "hint": "record netflow-original",
+                },
+        ],
+
+        "sample":
+"""
+flow monitor BUNNY
+ record netflow-original
+""",
+        },
+        {
+        "question": "Go to interface g0/0 and enable flow monitor BUNNY for ingress packets.",
+
+        "about": "interface g0/0",
+
+        "answer_lines": [
+                {
+                "answer": "interface g0/0",
+                "indention": "0",
+                "level": cli.CONFIG,
+                "hint": "interface g0/0",
+                },
+                {
+                "answer": "ip flow monitor BUNNY input",
+                "indention": "1",
+                "level": cli.CONFIG,
+                "hint": "ip flow monitor BUNNY input",
+                },
+        ],
+
+        "sample":
+"""
+interface g0/0
+ ip flow monitor BUNNY input
+""",
+        },
+        {
+        "question": "Run a show flow monitor",
+
+        "about": "show flow monitor",
+
+        "answer_lines": [
+                {
+                "answer": "show flow monitor",
+                "indention": "0",
+                "level": cli.CONFIG,
+                "hint": "show flow monitor",
+                },
+        ],
+
+        "sample":
+"""
+show flow monitor
+""",
+        },
+        {
+        "question": "Run show flow record netflow-original",
+
+        "about": "show flow record netflow-original",
+
+        "answer_lines": [
+                {
+                "answer": "show flow record netflow-original",
+                "indention": "0",
+                "level": cli.CONFIG,
+                "hint": "show flow record netflow-original",
+                },
+        ],
+
+        "sample":
+"""
+show flow record netflow-original
+""",
+        },
+        {
+        "question": "Create your own flow record, BUNNY-RECORD.",
+
+        "about": "flow record BUNNY-RECORD",
+
+        "answer_lines": [
+                {
+                "answer": "flow record BUNNY-RECORD",
+                "indention": "0",
+                "level": cli.CONFIG,
+                "hint": "flow record BUNNY-RECORD",
+                },
+                {
+                "answer": "description BUNNY-STUFF",
+                "indention": "1",
+                "level": cli.CONFIG,
+                "hint": "description BUNNY-STUFF",
+                },
+                {
+                "answer": "match ipv4 destination address",
+                "indention": "1",
+                "level": cli.CONFIG,
+                "hint": "match ipv4 destination address",
+                },
+                {
+                "answer": "match transport tcp destination-port",
+                "indention": "1",
+                "level": cli.CONFIG,
+                "hint": "match transport tcp destination-port",
+                },
+                {
+                "answer": "match transport udp destination-port",
+                "indention": "1",
+                "level": cli.CONFIG,
+                "hint": "match transport udp destination-port",
+                },
+                {
+                "answer": "collect counter packets",
+                "indention": "1",
+                "level": cli.CONFIG,
+                "hint": "collect counter packets",
+                },
+                {
+                "answer": "collect timestamp absolute first",
+                "indention": "1",
+                "level": cli.CONFIG,
+                "hint": "collect timestamp absolute first",
+                },
+        ],
+
+        "sample":
+"""
+flow record BUNNY-RECORD
+ description BUNNY-STUFF
+ match ipv4 destination address
+ match transport tcp destination-port
+ match transport udp destination-port
+ collect counter packets
+ collect timestamp absolute first
+""",
+        },
+        {
+        "question": "How do you configure flow monitor BUNNY-MONITOR to use record BUNNY-RECORD?",
+
+        "about": "flow monitor BUNNY-MONITOR",
+
+        "answer_lines": [
+                {
+                "answer": "flow monitor BUNNY-MONITOR",
+                "indention": "0",
+                "level": cli.CONFIG,
+                "hint": "flow monitor BUNNY-MONITOR",
+                },
+                {
+                "answer": "record BUNNY-RECORD",
+                "indention": "1",
+                "level": cli.CONFIG,
+                "hint": "record BUNNY-RECORD",
+                },
+        ],
+
+        "sample":
+"""
+flow monitor BUNNY-MONITOR
+ record BUNNY-RECORD
+""",
+        },
+        {
+        "question": "How do you apply BUNNY-MONITOR to interface g0/0",
+
+        "about": "interface gigabitEthernet0/0",
+
+        "answer_lines": [
+                {
+                "answer": "interface g0/0",
+                "indention": "0",
+                "level": cli.CONFIG,
+                "hint": "interface g0/0",
+                },
+                {
+                "answer": "ip flow monitor BUNNY-MONITOR input",
+                "indention": "1",
+                "level": cli.CONFIG,
+                "hint": "ip flow monitor BUNNY-MONITOR input",
+                },
+        ],
+
+        "sample":
+"""
+interface g0/0
+ ip flow monitor BUNNY-MONITOR input
+""",
+        },
+        {
+        "question": "Now it's time to learn TnF. This is rarer nowadays. Configure TnF with a 5 minute timeout for active flows:",
 
         "about": "ip flow-cache timeout active 5",
 
@@ -159,208 +362,5 @@ show ip cache verbose flow
 """
 netflow-original can only be used for ingress flows
 """,
-        },
-        {
-        "question": "Now it's time to configure FnF. How do you configure flow monitor BUNNY using the default record 'netflow-original'",
-
-        "about": "flow monitor BUNNY",
-
-        "answer_lines": [
-                {
-                "answer": "flow monitor BUNNY",
-                "indention": "0",
-                "level": cli.CONFIG,
-                "hint": "flow monitor BUNNY",
-                },
-                {
-                "answer": "record netflow-original",
-                "indention": "1",
-                "level": cli.CONFIG,
-                "hint": "record netflow-original",
-                },
-        ],
-
-        "sample":
-"""
-flow monitor BUNNY
- record netflow-original
-""",
-        },
-        {
-        "question": "Go to interface g0/0 and enable flow monitor BUNNY for ingress packets.",
-
-        "about": "interface g0/0",
-
-        "answer_lines": [
-                {
-                "answer": "interface g0/0",
-                "indention": "0",
-                "level": cli.CONFIG,
-                "hint": "interface g0/0",
-                },
-                {
-                "answer": "ip flow monitor BUNNY input",
-                "indention": "1",
-                "level": cli.CONFIG,
-                "hint": "ip flow monitor BUNNY input",
-                },
-        ],
-
-        "sample":
-"""
-interface g0/0
- ip flow monitor BUNNY input
-""",
-        },
-        {
-        "question": "How do you configure show flow monitor",
-
-        "about": "show flow monitor",
-
-        "answer_lines": [
-                {
-                "answer": "show flow monitor",
-                "indention": "0",
-                "level": cli.CONFIG,
-                "hint": "show flow monitor",
-                },
-        ],
-
-        "sample":
-"""
-show flow monitor
-""",
-        },
-        {
-        "question": "How do you configure show flow record netflow-original",
-
-        "about": "show flow record netflow-original",
-
-        "answer_lines": [
-                {
-                "answer": "show flow record netflow-original",
-                "indention": "0",
-                "level": cli.CONFIG,
-                "hint": "show flow record netflow-original",
-                },
-        ],
-
-        "sample":
-"""
-show flow record netflow-original
-""",
-        },
-        {
-        "question": "Create your own flow record, BUNNY-RECORD.",
-
-        "about": "flow record BUNNY-RECORD",
-
-        "answer_lines": [
-                {
-                "answer": "flow record BUNNY-RECORD",
-                "indention": "0",
-                "level": cli.CONFIG,
-                "hint": "flow record BUNNY-RECORD",
-                },
-                {
-                "answer": "description BUNNY-STUFF",
-                "indention": "1",
-                "level": cli.CONFIG,
-                "hint": "description BUNNY-STUFF",
-                },
-                {
-                "answer": "match ipv4 destination address",
-                "indention": "1",
-                "level": cli.CONFIG,
-                "hint": "match ipv4 destination address",
-                },
-                {
-                "answer": "match transport tcp destination-port",
-                "indention": "1",
-                "level": cli.CONFIG,
-                "hint": "match transport tcp destination-port",
-                },
-                {
-                "answer": "match transport udp destination-port",
-                "indention": "1",
-                "level": cli.CONFIG,
-                "hint": "match transport udp destination-port",
-                },
-                {
-                "answer": "collect counter packets",
-                "indention": "1",
-                "level": cli.CONFIG,
-                "hint": "collect counter packets",
-                },
-                {
-                "answer": "collect timestamp absolute first",
-                "indention": "1",
-                "level": cli.CONFIG,
-                "hint": "collect timestamp absolute first",
-                },
-        ],
-
-        "sample":
-"""
-flow record BUNNY-RECORD
- description BUNNY-STUFF
- match ipv4 destination address
- match transport tcp destination-port
- match transport udp destination-port
- collect counter packets
- collect timestamp absolute first
-""",
-        },
-        {
-        "question": "How do you configure flow monitor BUNNY-MONITOR",
-
-        "about": "flow monitor BUNNY-MONITOR",
-
-        "answer_lines": [
-                {
-                "answer": "flow monitor BUNNY-MONITOR",
-                "indention": "0",
-                "level": cli.CONFIG,
-                "hint": "flow monitor BUNNY-MONITOR",
-                },
-                {
-                "answer": "record BUNNY-RECORD",
-                "indention": "1",
-                "level": cli.CONFIG,
-                "hint": "record BUNNY-RECORD",
-                },
-        ],
-
-        "sample":
-"""
-flow monitor BUNNY-MONITOR
- record BUNNY-RECORD
-""",
-        },
-        {
-        "question": "How do you configure interface gigabitEthernet0/0",
-
-        "about": "interface gigabitEthernet0/0",
-
-        "answer_lines": [
-                {
-                "answer": "interface gigabitEthernet0/0",
-                "indention": "0",
-                "level": cli.CONFIG,
-                "hint": "interface gigabitEthernet0/0",
-                },
-                {
-                "answer": "ip flow monitor BUNNY-MONITOR input",
-                "indention": "1",
-                "level": cli.CONFIG,
-                "hint": "ip flow monitor BUNNY-MONITOR input",
-                },
-        ],
-
-        "sample":
-"""
-interface gigabitEthernet0/0
- ip flow monitor BUNNY-MONITOR input
-""",
-        },
+        }
 ]
