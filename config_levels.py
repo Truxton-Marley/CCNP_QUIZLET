@@ -1,16 +1,26 @@
 ###CONFIGURATION LEVELS
+EXEC = {
+    "prompt": "R1#",
+    "options": ["show ip interface brief"]
+    }
+
 CONFIG = {
     "prompt": "R1(config)#",
     "options": ["crypto"]
     }
 
-CRYPTO_POLICY = {
-    "prompt": "R1(config-crypto-policy)#",
+CONFIG_ISAKMP = {
+    "prompt": "R1(config-isakmp)#",
     "options": ["authentication", "encryption", "group", "hash", "lifetime"]
     }
 
-CRYPTO_IPSEC_PROFILE = {
-    "prompt": "R1(config-ipsec-profile)#",
+IPSEC_PROFILE = {
+    "prompt": "R1(ipsec-profile)#",
     "options": ["set", "match"]
+    }
+    
+CFG_CRYPTO_TRANS = {
+    "prompt": "R1(cfg-crypto-trans)#",
+    "options": ["mode transport", "mode tunnel"]
     }
 
