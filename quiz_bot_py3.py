@@ -4,6 +4,9 @@ from ios_devices import R1
 from embedded_packet_capture_questions import questions as epc_questions
 from ike_v1_questions import questions as ike_v1_questions
 from nat_questions import questions as nat_questions
+from netflow_questions import questions as netflow_questions
+from ip_sla_questions1 import questions as ip_sla_questions1
+from ip_sla_questions2 import questions as ip_sla_questions2
 
 ###TODO: BUILD A ROUTER CLASS WITH INTERFACES THAT WILL GIVE EXAMPLES WITH SHOW COMMANDS
 ###SHOULD BE ABLE TO DO SOMETHING LIKE (r1.show_ip_eigrp_neighbors) and print to screen.
@@ -101,12 +104,17 @@ def ask_question(question):
 ###TODO: MAKE SELECTION LESS FRAGILE
 
 def get_choice():
-    choice = input("What would you like to study today? Please enter a number.\n\t1)IKE\n\t2)EPC\n\t3)Exit\n>:")
+    choice = input("""What would you like to study today? Please enter a number.
+    \t1)IKE\n\t2)NetFlow\n\t3)IP SLA part 1\n\t4)IP SLA part 2\n\t5)Exit\n>:""")
     if choice == "1":
         questions = ike_v1_questions
     elif choice == "2":
-        questions = epc_questions
+        questions = netflow_questions
     elif choice == "3":
+        questions = ip_sla_questions1
+    elif choice == "4":
+        questions = ip_sla_questions2
+    elif choice == "5":
         sys.exit()
     else:
         get_choice()
